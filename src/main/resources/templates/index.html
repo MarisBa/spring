@@ -8,5 +8,15 @@
 <body>
     <p>Get your student <a href="/student">here</a></p>
     <h1>Spring Boot!</h1>
-</body>
+    <p th:text="${name}"></p>
+
+    <div th:each="item : ${hikingitem}">
+        <h3 th:text="${item}"></h3>
+    </div>
+
+    <div th:each="item : ${hobbies}">
+        <h4 th:text="${item}"></h3>
+    </div>
+    
+</body> 
 </html>

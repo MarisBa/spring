@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class CsvManager {
@@ -19,15 +20,20 @@ public class CsvManager {
         this.is = CsvManager.class.getClassLoader().getResourceAsStream(filePath);
     }
 
-    public ArrayList<String> getAllHobbies() {
-        ArrayList<String> hobbies = new ArrayList<>();
+    public ArrayList<HashMap> getAllHobbies() {
+        ArrayList<HashMap> hobbies = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(this.is))) {
             String header = reader.readLine(); // This reads and discards the first line
             String line;
+            
             while ((line = reader.readLine()) != null) {
                 String[] nextLine = line.split(", ");
-                hobbies.add(nextLine[1]);
-             
+                
+                HashMap<String, String> hobby = new HashMap<>();
+                hobby.put("id", nextLine[0]);
+                hobby.put("title", nextLine[1]);
+                hobby.put("content", nextLine[2]);
+                hobbies.add(hobby);
             }
         } catch (IOException e) {
             e.printStackTrace();

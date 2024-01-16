@@ -29,6 +29,12 @@ public class DefaultController {
 
         ModelAndView modelAndView = new ModelAndView("about");
 
+        System.out.println(allParams.get("name"));
+        System.err.println(allParams.get("surname"));;
+        System.out.println(allParams.get("age"));
+        System.out.println(allParams.get("hobbies"));
+        allParams.get("name");
+
         return new ModelAndView();
 
     }

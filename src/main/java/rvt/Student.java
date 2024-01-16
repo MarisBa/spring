@@ -13,4 +13,8 @@ public class Student {
         this.email = email;
         this.group = group;
     }
+
+
+    public Student() {
+    }
 }

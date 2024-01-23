@@ -38,6 +38,18 @@ public class DefaultController {
         return new ModelAndView();
 
     }
-   
+    @GetMapping("/test")
+    public ModelAndView testAction() {
+        // Assuming SomeData is a class you've define
 
+        Money mon1 = new Money(5);
+        Money mon2 = new Money(5);
+
+        boolean equals = mon1.equals(mon2);
+
+        ModelAndView modelAndView = new ModelAndView("test");
+        modelAndView.addObject("isEquals", equals);
+
+        return modelAndView;
+    }
 }

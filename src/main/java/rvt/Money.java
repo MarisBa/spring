@@ -4,9 +4,20 @@ public class Money {
     private final int euros;
     private final int cents;
 
+    // main constructor
     public Money(int euros, int cents) {
         this.euros = euros;
         this.cents = cents;
+    }
+
+    // helper construct
+    public Money(int euros) {
+        this(euros, 0);
+    }
+    
+    // helper construct
+    public Money() {
+        this(0,0);
     }
 
     public int euros() {
@@ -47,6 +58,15 @@ public class Money {
     }
 
 
+
+    public Money plus(int euroAmount) {
+
+        int currentEuroAmmount = this.euros;
+        int newCurrentAmmount = currentEuroAmmount + euroAmount;
+
+        return new Money(newCurrentAmmount);
+    }
+
     
     public boolean lessThan(Money compared) {
         if (this.euros < compared.euros) {
@@ -76,5 +96,32 @@ public class Money {
         }
 
         return new Money(decresedEuroValue, decresedCentsValue);
+    }
+
+
+    
+    public boolean equals(Object compared) {
+        // if the variables are located in the same position, they are equal
+
+        if (this == compared) {
+            return true;
+        }
+
+        // if the compared object is not of type Person, the objects are not equal
+        if (!(compared instanceof Money)) {
+            return false;
+        }
+
+        // convert the object into a Person object
+        Money comparedMoney = (Money) compared;
+
+        // if the values of the object variables are equal, the objects are equal
+        if (this.euros == comparedMoney.euros
+            && this.cents == comparedMoney.cents
+        ) {
+            return true;
+        }
+        // otherwise the objects are not equal
+        return false;
     }
 }

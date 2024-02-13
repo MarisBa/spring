@@ -1,20 +1,39 @@
 package rvt;
 
-public class Student {
-    public String name;
-    public String surname;
-    public String email;
-    public String group;
+public class Student extends Person {
 
+    private String students;
+    private String adress2;
+    private int credits;
 
-    public Student(String name, String surname, String email, String group) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.group = group;
+    public Student(String students, String adress2, int credits) {
+        super(students, adress2); 
+        this.students = students;
+        this.adress2 = adress2;
+        this.credits = credits;
     }
 
 
-    public Student() {
+    private int studyCredits;
+
+
+    public Student(String name, String address) {
+        super(name, address);
+        this.studyCredits = 0;
+    }
+
+
+    public void study() {
+        studyCredits++;
+    }
+
+
+    public int credits() {
+        return studyCredits;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\n  Study credits " + studyCredits;
     }
 }
